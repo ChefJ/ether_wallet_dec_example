@@ -48,5 +48,7 @@ my_key = decrypt_key(pwd, kdfparams)
 if verify_key(my_key, ciphertext, mac):
     print('BINGO!恭喜恭喜。')
     raw_key = get_raw_key(my_key, iv, ciphertext)
+    print('KEY:')
+    print(raw_key)
 else:
     print('WRONG.再试试吧。')
