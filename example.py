@@ -29,7 +29,7 @@ def get_raw_key(dec_key, iv, ciphertext):
     ctr = Counter.new(AES.block_size * 8, initial_value=iv_int)
     dec_suite = AES.new(dec_key, AES.MODE_CTR, counter=ctr)
     plain_key = dec_suite.decrypt(bytes.fromhex(ciphertext))
-    return plain_key
+    return plain_key.hex()
 
     
 kdfparams={
