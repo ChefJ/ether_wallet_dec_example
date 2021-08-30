@@ -27,7 +27,7 @@ def verify_key(dec_key, ciphertext, mac):
 def get_raw_key(dec_key, iv, ciphertext):
     iv_int=int(iv, 16)
     ctr = Counter.new(AES.block_size * 8, initial_value=iv_int)
-    dec_suite = AES.new(dec_key, AES.MODE_CTR, counter=ctr)
+    dec_suite = AES.new(dec_key[0:16], AES.MODE_CTR, counter=ctr) #传前十六位还是全传？待定
     plain_key = dec_suite.decrypt(bytes.fromhex(ciphertext))
     return plain_key.hex()
 
